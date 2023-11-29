@@ -15,21 +15,24 @@ class MovieCarosel extends StatefulWidget {
 class _MovieCaroselState extends State<MovieCarosel> {
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider.builder(
-      itemCount: widget.movielist.length,
-      itemBuilder: (context, itemIndex, pageViewIndex) {
-        return CachedNetworkImage(
-          width: double.infinity,
-          fit: BoxFit.fill,
-          imageUrl:
-              pimagedburl + widget.movielist[itemIndex].backdropPath.toString(),
-          placeholder: (context, url) =>
-              const Center(child: CircularProgressIndicator()),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
-        );
-      },
-      options:
-          CarouselOptions(height: 180, autoPlay: true, aspectRatio: 16 / 9),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: CarouselSlider.builder(
+        itemCount: widget.movielist.length,
+        itemBuilder: (context, itemIndex, pageViewIndex) {
+          return CachedNetworkImage(
+            width: double.infinity,
+            fit: BoxFit.fill,
+            imageUrl: pimagedburl +
+                widget.movielist[itemIndex].backdropPath.toString(),
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          );
+        },
+        options:
+            CarouselOptions(height: 180, autoPlay: true, aspectRatio: 16 / 9),
+      ),
     );
   }
 }

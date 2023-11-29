@@ -27,25 +27,24 @@ class _HomepageState extends State<Homepage> {
         backgroundColor: Colors.black87,
         appBar: AppBar(
           title: const Text(
-            "Movie\nApp",
+            "Movie APP",
+            style: TextStyle(
+                color: Colors.white, fontSize: 28, fontWeight: FontWeight.w500),
           ),
-          leading: const FlutterLogo(size: 10),
-          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-          actions: const [Icon(Icons.menu)],
-          toolbarHeight: 40,
-          titleTextStyle: TextStyle(color: Colors.white),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: const FlutterLogo(
+                  size: 40,
+                ),
+              ),
+            )
+          ],
+          backgroundColor: Colors.black,
         ),
         body: getview(),
-        bottomNavigationBar: BottomNavigationBar(
-            currentIndex: _selectedIndex,
-            onTap: (index) {
-              _selectedIndex = index;
-              setState(() {});
-            },
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.movie), label: "Movie"),
-              BottomNavigationBarItem(icon: Icon(Icons.tv), label: "TV"),
-            ]),
       ),
     );
   }

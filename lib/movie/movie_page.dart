@@ -4,6 +4,7 @@ import 'package:movie_app/Model/PMovie.dart';
 import 'package:movie_app/movie/movie_cat.dart';
 
 import 'package:movie_app/movie/moviecarousel.dart';
+import 'package:movie_app/movie/searchbar.dart';
 import 'package:movie_app/service/apiservice.dart';
 
 class MovieHome extends StatefulWidget {
@@ -32,7 +33,7 @@ class _MovieHomeState extends State<MovieHome> {
             },
             future: apiservice.getmoviedata(MovieType.popular),
           ),
-          
+          SearchMovie(),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             child: const Row(

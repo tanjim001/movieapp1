@@ -69,6 +69,30 @@ class Apiservice {
     }
   }
 
+  Future<List<PMovie>> searchdata(String query) async {
+    String url = "";
+    url = "https://api.themoviedb.org/3/search/movie";
+    try {
+      http.Response response = await http.get(Uri.parse(
+          "$url?api_key=b626c247964990566e98170ded959e44&language=en-us&query=$query")); // Use http.get instead of get
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> json = jsonDecode(response.body);
+        List<dynamic> body =
+            json['results']; // Use 'results' instead of 'result'
+
+        // Assuming PMovie.fromJson is a constructor in your PMovie class to create an instance from JSON
+        List<PMovie> sreasult =
+            body.map((dynamic item) => PMovie.fromJson(item)).toList();
+        return sreasult;
+      } else {
+        throw Exception('no movie found');
+      }
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
   Future<List<PCast>> getcastlist(int id) async {
     String url = "";
     url = moviedburl + id.toString() + pcredits;

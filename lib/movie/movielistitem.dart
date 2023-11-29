@@ -20,14 +20,15 @@ class MovieListItem extends StatelessWidget {
           ),
         );
       },
-      child: SizedBox(
+      child: Container(
         width: 160,
+        height: 350,
         child: Column(
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: CachedNetworkImage(
-                width: 140,
+                width: 150,
                 height: 160,
                 fit: BoxFit.cover,
                 imageUrl: pimagedburl + moviemodal.posterPath.toString(),
